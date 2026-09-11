@@ -42,8 +42,8 @@
 body {
   background-color: var(--color-cream-bg);
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(95, 17, 30, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(199, 154, 69, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 10% 20%, rgba(95, 17, 30, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(199, 154, 69, 0.08) 0%, transparent 40%),
     radial-gradient(circle at 50% 50%, rgba(253, 251, 247, 0.8) 0%, rgba(245, 239, 230, 0.9) 100%);
   font-family: var(--font-serif-luxury);
   color: var(--color-text-main);
@@ -51,9 +51,308 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 12px;
+  padding: 28px 14px;
   overflow-x: hidden;
   position: relative;
+}
+
+/* =========================================================
+   AMBIENT FLOATING BACKGROUND EFFECTS (OUTER WEBPAGE)
+   ========================================================= */
+.ambient-bg-effect {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Soft Warm Glowing Bokeh Orbs */
+.bokeh-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.45;
+  animation: orbFloat 14s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(199, 154, 69, 0.35) 0%, transparent 70%);
+  top: 5%;
+  left: -80px;
+  animation-duration: 18s;
+}
+
+.orb-2 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(95, 17, 30, 0.28) 0%, transparent 70%);
+  bottom: 8%;
+  right: -100px;
+  animation-duration: 22s;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(243, 224, 184, 0.4) 0%, transparent 70%);
+  top: 45%;
+  right: 5%;
+  animation-duration: 16s;
+  animation-delay: -9s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translateY(0) scale(1) translate(0, 0); }
+  50% { transform: translateY(-40px) scale(1.12) translate(25px, 15px); }
+  100% { transform: translateY(30px) scale(0.95) translate(-20px, 35px); }
+}
+
+/* =========================================================
+   CINEMATIC GOLDEN LYRICS VISUALIZER (SWAY STREAM)
+   ========================================================= */
+.lyrics-stream-flank {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  pointer-events: none;
+  z-index: 8;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lyrics-stream-flank.active {
+  opacity: 1;
+}
+
+.flank-left {
+  left: calc(50% - 630px);
+  transform: translateY(-50%) translateX(-20px);
+}
+
+.flank-left.active {
+  transform: translateY(-50%) translateX(0);
+}
+
+.flank-right {
+  right: calc(50% - 630px);
+  transform: translateY(-50%) translateX(20px);
+}
+
+.flank-right.active {
+  transform: translateY(-50%) translateX(0);
+}
+
+.lyric-glass-card {
+  background: rgba(253, 251, 247, 0.82);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(199, 154, 69, 0.45);
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(67, 11, 20, 0.12), 0 0 25px rgba(199, 154, 69, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: floatSubtle 6s ease-in-out infinite alternate;
+}
+
+.flank-right .lyric-glass-card {
+  animation-delay: -3s;
+}
+
+@keyframes floatSubtle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
+}
+
+.lyric-note-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-main));
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(199, 154, 69, 0.4);
+}
+
+.lyric-quote-text {
+  font-family: var(--font-serif-luxury);
+  font-style: italic;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-burgundy-deep);
+  line-height: 1.45;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 2px rgba(67, 11, 20, 0.08);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.45s ease;
+}
+
+.lyric-quote-text.pop {
+  animation: lyricPop 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lyricPop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lyric-sub-artist {
+  font-family: var(--font-sans-clean);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  font-weight: 600;
+  display: block;
+}
+
+/* Floating Live Lyrics Banner (Spacious & Crystal Clear for Mobile & Desktop) */
+.live-lyrics-ribbon {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(67, 11, 20, 0.96) 0%, rgba(95, 17, 30, 0.94) 50%, rgba(67, 11, 20, 0.96) 100%);
+  color: #fff;
+  border: 1.5px solid var(--color-gold-main);
+  border-radius: 20px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(67, 11, 20, 0.25), inset 0 0 15px rgba(199, 154, 69, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 58px;
+}
+
+.live-lyrics-ribbon.playing {
+  border-color: #ffd700;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5), 0 10px 30px rgba(67, 11, 20, 0.35);
+  transform: scale(1.01);
+}
+
+.ribbon-text {
+  font-family: var(--font-serif-luxury);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #fff4e0;
+  text-align: center;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  line-height: 1.35;
+  transition: all 0.35s ease;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.ribbon-music-icon {
+  font-size: 1.15rem;
+  color: var(--color-gold-light);
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Audio Equalizer Visualizer Waves */
+.live-audio-waves {
+  position: absolute;
+  right: 58px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.live-audio-waves.active {
+  opacity: 1;
+}
+
+.live-audio-waves span {
+  width: 3.5px;
+  height: 100%;
+  background: var(--color-gold-main);
+  border-radius: 2px;
+  animation: wavePulse 1.2s ease-in-out infinite alternate;
+}
+
+.live-audio-waves span:nth-child(1) { animation-delay: 0s; height: 40%; }
+.live-audio-waves span:nth-child(2) { animation-delay: 0.3s; height: 90%; }
+.live-audio-waves span:nth-child(3) { animation-delay: 0.15s; height: 65%; }
+.live-audio-waves span:nth-child(4) { animation-delay: 0.45s; height: 80%; }
+
+@keyframes wavePulse {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+/* Responsive Adaptability for Flanks */
+@media (max-width: 1400px) {
+  .lyrics-stream-flank {
+    width: 200px;
+  }
+  .flank-left {
+    left: calc(50% - 530px);
+  }
+  .flank-right {
+    right: calc(50% - 530px);
+  }
+  .lyric-quote-text {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 1120px) {
+  .lyrics-stream-flank {
+    display: none; /* Mobile & small tablets enjoy the ribbon visualizer */
+  }
+}
+
+.floating-petal {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.7) 0%, rgba(95, 17, 30, 0.5) 100%);
+  border-radius: 60% 0 60% 0;
+  opacity: 0.6;
+  filter: drop-shadow(0 2px 5px rgba(199, 154, 69, 0.3));
+  animation: petalFall linear infinite;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-50px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(105vh) rotate(540deg) translateX(80px);
+    opacity: 0;
+  }
 }
 
 /* Page Wrapper */
@@ -64,6 +363,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  position: relative;
+  z-index: 10;
 }
 
 /* =========================================================
@@ -182,7 +483,7 @@ body {
   transform: rotate(25deg);
 }
 
-/* Botanical Branches */
+/* Botanical Branches with Gentle Organic Sway */
 .botanical-branch {
   position: absolute;
   pointer-events: none;
@@ -195,6 +496,8 @@ body {
   width: 140px;
   height: 190px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  animation: branchSwayLeft 7s ease-in-out infinite alternate;
+  transform-origin: top left;
 }
 
 .branch-bottom-right {
@@ -203,6 +506,18 @@ body {
   width: 160px;
   height: 220px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  animation: branchSwayRight 8s ease-in-out infinite alternate;
+  transform-origin: bottom right;
+}
+
+@keyframes branchSwayLeft {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(2deg) scale(1.02); }
+}
+
+@keyframes branchSwayRight {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(-2.5deg) scale(1.02); }
 }
 
 /* Outer Rectangular Border */
@@ -728,8 +1043,27 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  left: 140%;
 }
 
 .btn:active {
@@ -899,6 +1233,17 @@ body {
 
   .card-container {
     padding: 16px 10px;
+  }
+
+  .live-lyrics-ribbon {
+    padding: 12px 14px;
+    min-height: 52px;
+    border-radius: 16px;
+  }
+
+  .ribbon-text {
+    font-size: 1.05rem;
+    line-height: 1.3;
   }
 
   .card-arch-frame {

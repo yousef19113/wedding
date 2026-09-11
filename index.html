@@ -23,19 +23,56 @@
 </head>
 <body>
 
-  <!-- Floating Audio Player Control -->
+  <!-- Ambient Floating Background Particles / Petals & Dancing Couples -->
+  <div class="ambient-bg-effect" aria-hidden="true">
+    <div class="bokeh-orb orb-1"></div>
+    <div class="bokeh-orb orb-2"></div>
+    <div class="bokeh-orb orb-3"></div>
+    <div class="floating-petals-wrap" id="petalsContainer"></div>
+
+    <!-- Left & Right Synced Golden Lyrics Stream (Sway Visualizer) -->
+    <div class="lyrics-stream-flank flank-left" id="lyricsFlankLeft" aria-hidden="true">
+      <div class="lyric-glass-card">
+        <div class="lyric-note-badge">♪</div>
+        <p class="lyric-quote-text" id="leftLyricText">When marimba rhythms start to play...</p>
+        <span class="lyric-sub-artist">Michael Bublé — Sway</span>
+      </div>
+    </div>
+
+    <div class="lyrics-stream-flank flank-right" id="lyricsFlankRight" aria-hidden="true">
+      <div class="lyric-glass-card">
+        <div class="lyric-note-badge">♫</div>
+        <p class="lyric-quote-text" id="rightLyricText">Dance with me, make me sway...</p>
+        <span class="lyric-sub-artist">Silvia & David • 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Audio Player Control with Live Mini-Visualizer -->
   <div class="audio-control-container">
-    <button id="musicToggleBtn" class="floating-btn" title="Play / Pause Wedding Music" aria-label="Toggle background music">
+    <div class="live-audio-waves" id="audioWaves" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <button id="musicToggleBtn" class="floating-btn" title="Play / Pause 'Sway' Wedding Song" aria-label="Toggle background music">
       <i class="fa-solid fa-music"></i>
-      <span class="music-tooltip">Play Music 🎵</span>
+      <span class="music-tooltip">Play "Sway" 💃🎶</span>
     </button>
   </div>
 
+  <!-- Sway (Michael Bublé) Audio Player -->
   <audio id="weddingAudio" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-112191.mp3" type="audio/mp3">
+    <source src="sway.webm" type="audio/webm">
+    <source src="sway.mp3" type="audio/mpeg">
   </audio>
 
   <main class="page-wrapper">
+    <!-- Floating Live Lyrics Ribbon -->
+    <div class="live-lyrics-ribbon" id="liveLyricsRibbon">
+      <span class="ribbon-music-icon">🎵</span>
+      <span class="ribbon-text" id="ribbonLyricText">Click play to listen to "Sway" & watch lyrics</span>
+      <span class="ribbon-music-icon">✨</span>
+    </div>
+
     <!-- Action Bar for Guests -->
     <header class="top-action-bar">
       <div class="countdown-card" id="countdownSection">

@@ -6,6 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/TwyHQiNAUAUG1AUY8?g_st=aw";
   const WEDDING_DATE = new Date("2026-10-25T15:00:00+02:00"); // October 25, 2026 at 3:00 PM Cairo Time
 
+  // 0. GENERATE AMBIENT FLOATING PETALS IN BACKGROUND
+  const petalsContainer = document.getElementById("petalsContainer");
+  if (petalsContainer) {
+    const petalCount = 14;
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement("div");
+      petal.classList.add("floating-petal");
+      
+      const size = Math.random() * 12 + 8; // 8px - 20px
+      const leftPos = Math.random() * 100; // 0% - 100%
+      const duration = Math.random() * 10 + 12; // 12s - 22s
+      const delay = Math.random() * 15; // 0s - 15s
+
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size * 1.3}px`;
+      petal.style.left = `${leftPos}%`;
+      petal.style.animationDuration = `${duration}s`;
+      petal.style.animationDelay = `${delay}s`;
+      
+      petalsContainer.appendChild(petal);
+    }
+  }
+
   // 1. GENERATE QR CODE FOR GOOGLE MAPS
   const qrcodeElement = document.getElementById("qrcode");
   if (qrcodeElement) {
@@ -50,27 +73,101 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 3. BACKGROUND MUSIC CONTROLLER
+  // 3. BACKGROUND MUSIC CONTROLLER & SYNCED LYRICS VISUALIZER
   const musicBtn = document.getElementById("musicToggleBtn");
   const audio = document.getElementById("weddingAudio");
+  const audioWaves = document.getElementById("audioWaves");
+  const lyricsFlankLeft = document.getElementById("lyricsFlankLeft");
+  const lyricsFlankRight = document.getElementById("lyricsFlankRight");
+  const leftLyricText = document.getElementById("leftLyricText");
+  const rightLyricText = document.getElementById("rightLyricText");
+  const liveLyricsRibbon = document.getElementById("liveLyricsRibbon");
+  const ribbonLyricText = document.getElementById("ribbonLyricText");
+
   let isPlaying = false;
+  let currentLyricIndex = -1;
+
+  // Real-time Timed Lyrics for "Sway" by Michael Bublé (Shifted 1.8s earlier for comfortable reading)
+  const SWAY_LYRICS = [
+    { time: 0, left: "♫ (Intro Melody) ♫", right: "Silvia & David • 25 Oct 2026 💍", ribbon: "♫ Sway — Michael Bublé ♫" },
+    { time: 12.5, left: "When marimba rhythms start to play...", right: "Dance with me, make me sway...", ribbon: "When marimba rhythms start to play... Dance with me, make me sway 💃" },
+    { time: 20.2, left: "Like a lazy ocean hugs the shore...", right: "Hold me close, sway me more...", ribbon: "Like a lazy ocean hugs the shore... Hold me close, sway me more 🌊" },
+    { time: 28.2, left: "Like a flower bending in the breeze...", right: "Bend with me, sway with ease...", ribbon: "Like a flower bending in the breeze... Bend with me, sway with ease 🌸" },
+    { time: 36.2, left: "When we dance you have a way with me...", right: "Stay with me, sway with me...", ribbon: "When we dance you have a way with me... Stay with me, sway with me ✨" },
+    { time: 44.2, left: "Other dancers may be on the floor...", right: "Dear, but my eyes will see only you...", ribbon: "Other dancers may be on the floor... but my eyes will see only you ❤️" },
+    { time: 52.2, left: "Only you have that magic technique...", right: "When we sway I go weak...", ribbon: "Only you have that magic technique... When we sway I go weak 💫" },
+    { time: 60.2, left: "I can hear the sounds of violins...", right: "Long before it begins...", ribbon: "I can hear the sounds of violins... Long before it begins 🎻" },
+    { time: 68.2, left: "Make me thrill as only you know how...", right: "Sway me smooth, sway me now...", ribbon: "Make me thrill as only you know how... Sway me smooth, sway me now 💃" },
+    { time: 76.2, left: "♫ (Sensational Horn Solo) ♫", right: "Celebrate Silvia & David!", ribbon: "♫ Celebrate love, unity, and a beautiful beginning ♫" },
+    { time: 92.2, left: "Other dancers may be on the floor...", right: "Dear, but my eyes will see only you...", ribbon: "Other dancers may be on the floor... but my eyes will see only you ❤️" },
+    { time: 100.2, left: "Only you have that magic technique...", right: "When we sway I go weak...", ribbon: "Only you have that magic technique... When we sway I go weak 💫" },
+    { time: 108.2, left: "When we dance you have a way with me...", right: "Stay with me, sway with me...", ribbon: "Stay with me, sway with me... Sway me now! 💍✨" }
+  ];
 
   if (musicBtn && audio) {
     musicBtn.addEventListener("click", () => {
       if (isPlaying) {
         audio.pause();
         musicBtn.classList.remove("playing");
-        musicBtn.querySelector(".music-tooltip").textContent = "Play Music 🎵";
+        musicBtn.querySelector(".music-tooltip").textContent = "Play 'Sway' 💃🎶";
+        if (audioWaves) audioWaves.classList.remove("active");
+        if (lyricsFlankLeft) lyricsFlankLeft.classList.remove("active");
+        if (lyricsFlankRight) lyricsFlankRight.classList.remove("active");
+        if (liveLyricsRibbon) liveLyricsRibbon.classList.remove("playing");
+        if (ribbonLyricText) ribbonLyricText.textContent = "Click play to listen to 'Sway' & watch lyrics";
         isPlaying = false;
       } else {
         audio.play().then(() => {
           musicBtn.classList.add("playing");
-          musicBtn.querySelector(".music-tooltip").textContent = "Pause Music ⏸";
+          musicBtn.querySelector(".music-tooltip").textContent = "Pause 'Sway' ⏸";
+          if (audioWaves) audioWaves.classList.add("active");
+          if (lyricsFlankLeft) lyricsFlankLeft.classList.add("active");
+          if (lyricsFlankRight) lyricsFlankRight.classList.add("active");
+          if (liveLyricsRibbon) liveLyricsRibbon.classList.add("playing");
           isPlaying = true;
           triggerGentleConfetti();
         }).catch(err => {
-          console.log("Audio playback error:", err);
+          console.error("Audio playback error:", err);
+          audio.load();
+          audio.play();
         });
+      }
+    });
+
+    // Real-time Lyrics Synchronization
+    audio.addEventListener("timeupdate", () => {
+      if (!isPlaying) return;
+      const currentTime = audio.currentTime;
+      let matchedIndex = 0;
+
+      for (let i = SWAY_LYRICS.length - 1; i >= 0; i--) {
+        if (currentTime >= SWAY_LYRICS[i].time) {
+          matchedIndex = i;
+          break;
+        }
+      }
+
+      if (matchedIndex !== currentLyricIndex) {
+        currentLyricIndex = matchedIndex;
+        const currentData = SWAY_LYRICS[matchedIndex];
+
+        if (leftLyricText) {
+          leftLyricText.textContent = currentData.left;
+          leftLyricText.classList.remove("pop");
+          void leftLyricText.offsetWidth; // trigger reflow
+          leftLyricText.classList.add("pop");
+        }
+
+        if (rightLyricText) {
+          rightLyricText.textContent = currentData.right;
+          rightLyricText.classList.remove("pop");
+          void rightLyricText.offsetWidth;
+          rightLyricText.classList.add("pop");
+        }
+
+        if (ribbonLyricText) {
+          ribbonLyricText.textContent = currentData.ribbon;
+        }
       }
     });
   }
