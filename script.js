@@ -166,20 +166,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. WHATSAPP SHARING
+  // 6. WHATSAPP SHARING (Universal wa.me link)
   const btnShareWhatsApp = document.getElementById("btnShareWhatsApp");
   if (btnShareWhatsApp) {
-    btnShareWhatsApp.addEventListener("click", () => {
-      const message = encodeURIComponent(
-        `💍 *Wedding Invitation | Silvia & David*\n\n` +
-        `Together with joyful hearts and the blessings of God, we invite you to celebrate the holy matrimony of *Silvia Ayman & David Medhat*! ✨\n\n` +
-        `📅 *Date:* Sunday, October 25, 2026\n` +
-        `⏰ *Time:* 3:00 PM\n` +
-        `📍 *Venue:* Archangel Michael Church, Sheraton\n` +
-        `🗺 *Location:* ${GOOGLE_MAPS_URL}\n\n` +
-        `We can't wait to celebrate with you!`
-      );
-      window.open(`https://api.whatsapp.com/send?text=${message}`, "_blank");
+    const rawMessage = 
+`💍 Wedding Invitation | Silvia & David
+
+Together with joyful hearts and the blessings of God, we invite you to celebrate the holy matrimony of Silvia Ayman & David Medhat! ✨
+
+📅 Date: Sunday, October 25, 2026
+⏰ Time: 3:00 PM
+📍 Venue: Archangel Michael Church, Sheraton
+🗺 Location: ${GOOGLE_MAPS_URL}
+
+We can't wait to celebrate with you!`;
+
+    const encodedMessage = encodeURIComponent(rawMessage);
+    // Universal WhatsApp API endpoint (works on iOS, Android, and Desktop WhatsApp Web)
+    btnShareWhatsApp.href = `https://wa.me/?text=${encodedMessage}`;
+    
+    // Also attach click listener as fallback
+    btnShareWhatsApp.addEventListener("click", (e) => {
+      // Direct navigation handled by anchor tag
+      triggerGentleConfetti();
     });
   }
 
