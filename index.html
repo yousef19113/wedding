@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation | Silvia & David</title>
+  <meta name="description" content="Wedding celebration invitation of Silvia Ayman & David Medhat - October 25, 2026 at Archangel Michael Church, Sheraton." />
+  
+  <!-- Google Fonts for Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- QRCode.js and html2canvas for interactive features -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating Audio Player Control -->
+  <div class="audio-control-container">
+    <button id="musicToggleBtn" class="floating-btn" title="Play / Pause Wedding Music" aria-label="Toggle background music">
+      <i class="fa-solid fa-music"></i>
+      <span class="music-tooltip">Play Music 🎵</span>
+    </button>
+  </div>
+
+  <audio id="weddingAudio" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-112191.mp3" type="audio/mp3">
+  </audio>
+
+  <main class="page-wrapper">
+    <!-- Action Bar for Guests -->
+    <header class="top-action-bar">
+      <div class="countdown-card" id="countdownSection">
+        <span class="countdown-title"><i class="fa-regular fa-heart"></i> COUNTING DOWN TO OUR SPECIAL DAY</span>
+        <div class="timer-grid">
+          <div class="timer-box">
+            <span class="timer-val" id="days">00</span>
+            <span class="timer-lbl">Days</span>
+          </div>
+          <span class="timer-sep">:</span>
+          <div class="timer-box">
+            <span class="timer-val" id="hours">00</span>
+            <span class="timer-lbl">Hours</span>
+          </div>
+          <span class="timer-sep">:</span>
+          <div class="timer-box">
+            <span class="timer-val" id="minutes">00</span>
+            <span class="timer-lbl">Mins</span>
+          </div>
+          <span class="timer-sep">:</span>
+          <div class="timer-box">
+            <span class="timer-val" id="seconds">00</span>
+            <span class="timer-lbl">Secs</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Wedding Card Section (Capturable as Image) -->
+    <div class="card-container" id="invitationCard">
+      <!-- Watercolor and Foil Botanical Background Elements -->
+      <div class="bg-watercolor top-left-watercolor"></div>
+      <div class="bg-watercolor bottom-right-watercolor"></div>
+
+      <div class="botanical-branch branch-top-left">
+        <svg viewBox="0 0 160 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 210 Q 50 140 130 20" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- Gold & Burgundy Leaf pairs -->
+          <path d="M130 20 C 145 10, 160 30, 130 20 Z" fill="url(#goldGrad)"/>
+          <path d="M100 60 C 135 45, 140 75, 100 60 Z" fill="url(#goldGrad)"/>
+          <path d="M90 75 C 60 55, 50 85, 90 75 Z" fill="url(#goldGrad)"/>
+          <path d="M68 115 C 105 100, 110 130, 68 115 Z" fill="url(#goldGrad)"/>
+          <path d="M55 130 C 25 110, 15 140, 55 130 Z" fill="url(#goldGrad)"/>
+          <path d="M35 170 C 70 155, 75 185, 35 170 Z" fill="url(#goldGrad)"/>
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#DEBA7E" />
+              <stop offset="50%" stop-color="#C59A45" />
+              <stop offset="100%" stop-color="#997022" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="botanical-branch branch-bottom-right">
+        <svg viewBox="0 0 180 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M170 250 Q 120 160 30 20" stroke="url(#goldGrad2)" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Wine and Gold foil detailed leaves -->
+          <path d="M30 20 C 10 10, 5 35, 30 20 Z" fill="url(#goldGrad2)"/>
+          <path d="M55 60 C 15 45, 10 80, 55 60 Z" fill="#6B1322" opacity="0.9"/>
+          <path d="M70 75 C 110 55, 115 90, 70 75 Z" fill="url(#goldGrad2)"/>
+          <path d="M90 120 C 45 105, 35 145, 90 120 Z" fill="#4A0C16"/>
+          <path d="M110 140 C 155 120, 160 160, 110 140 Z" fill="url(#goldGrad2)"/>
+          <path d="M130 185 C 85 170, 75 210, 130 185 Z" fill="#6B1322"/>
+          <path d="M150 205 C 190 190, 195 230, 150 205 Z" fill="url(#goldGrad2)"/>
+          <defs>
+            <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#EED59B" />
+              <stop offset="50%" stop-color="#C89D4B" />
+              <stop offset="100%" stop-color="#906517" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Outer Rectangular Frame with Vintage Corner Filigrees -->
+      <div class="card-outer-border">
+        <!-- 4 Corner Filigrees -->
+        <div class="corner-filigree filigree-top-left">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M 4 40 L 4 12 C 4 4 12 4 40 4 M 10 40 L 10 18 C 10 10 18 10 40 10" stroke="#C59A45" stroke-width="1.2" fill="none"/><circle cx="8" cy="8" r="2.5" fill="#D3AC61"/></svg>
+        </div>
+        <div class="corner-filigree filigree-top-right">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M 36 40 L 36 12 C 36 4 28 4 0 4 M 30 40 L 30 18 C 30 10 22 10 0 10" stroke="#C59A45" stroke-width="1.2" fill="none"/><circle cx="32" cy="8" r="2.5" fill="#D3AC61"/></svg>
+        </div>
+        <div class="corner-filigree filigree-bottom-left">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M 4 0 L 4 28 C 4 36 12 36 40 36 M 10 0 L 10 22 C 10 30 18 30 40 30" stroke="#C59A45" stroke-width="1.2" fill="none"/><circle cx="8" cy="32" r="2.5" fill="#D3AC61"/></svg>
+        </div>
+        <div class="corner-filigree filigree-bottom-right">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M 36 0 L 36 28 C 36 36 28 36 0 36 M 30 0 L 30 22 C 30 30 22 30 0 30" stroke="#C59A45" stroke-width="1.2" fill="none"/><circle cx="32" cy="32" r="2.5" fill="#D3AC61"/></svg>
+        </div>
+
+        <!-- Inner Classic Arch Frame -->
+        <div class="card-arch-frame">
+          <!-- Floating Shimmer Sparkles -->
+          <div class="sparkles-container" aria-hidden="true">
+            <span class="sparkle s1">✦</span>
+            <span class="sparkle s2">✧</span>
+            <span class="sparkle s3">✦</span>
+            <span class="sparkle s4">✧</span>
+            <span class="sparkle s5">✦</span>
+            <span class="sparkle s6">✧</span>
+            <span class="sparkle s7">✦</span>
+            <span class="sparkle s8">✧</span>
+          </div>
+
+          <!-- Subtle Luxury Monogram Watermark in Background -->
+          <div class="watermark-monogram" aria-hidden="true">
+            <span class="wm-letter wm-s">S</span>
+            <span class="wm-amp">&</span>
+            <span class="wm-letter wm-d">D</span>
+          </div>
+
+          <!-- Arch Flank Botanical Accents -->
+          <div class="arch-side-botanical bot-left" aria-hidden="true">
+            <svg viewBox="0 0 60 120" fill="none"><path d="M 10 110 Q 30 60 50 10" stroke="#C59A45" stroke-width="1.2" stroke-linecap="round"/><path d="M 50 10 C 58 5, 55 20, 50 10 Z" fill="#C59A45"/><path d="M 38 35 C 50 25, 45 45, 38 35 Z" fill="#D3AC61"/><path d="M 28 65 C 40 55, 35 75, 28 65 Z" fill="#C59A45"/><path d="M 18 90 C 30 80, 25 100, 18 90 Z" fill="#D3AC61"/></svg>
+          </div>
+          <div class="arch-side-botanical bot-right" aria-hidden="true">
+            <svg viewBox="0 0 60 120" fill="none"><path d="M 50 110 Q 30 60 10 10" stroke="#C59A45" stroke-width="1.2" stroke-linecap="round"/><path d="M 10 10 C 2 5, 5 20, 10 10 Z" fill="#C59A45"/><path d="M 22 35 C 10 25, 15 45, 22 35 Z" fill="#D3AC61"/><path d="M 32 65 C 20 55, 25 75, 32 65 Z" fill="#C59A45"/><path d="M 42 90 C 30 80, 35 100, 42 90 Z" fill="#D3AC61"/></svg>
+          </div>
+
+          <div class="arch-inner-content">
+            
+            <!-- Monogram Header -->
+            <div class="monogram-wrapper">
+              <div class="monogram-wreath">
+                <svg viewBox="0 0 160 160" class="wreath-svg">
+                  <!-- Oval Gold Wreath with leaves -->
+                  <circle cx="80" cy="80" r="64" fill="none" stroke="#D3AC61" stroke-width="1.2" stroke-dasharray="4 2" />
+                  <ellipse cx="80" cy="80" rx="60" ry="60" fill="none" stroke="#C59A45" stroke-width="1.5" />
+                  
+                  <!-- Left wreath branch -->
+                  <path d="M 40 120 C 20 80 40 40 76 22" fill="none" stroke="#B88A30" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M 48 35 C 38 30 35 45 48 35 Z" fill="#C59A45"/>
+                  <path d="M 33 55 C 20 50 22 68 33 55 Z" fill="#C59A45"/>
+                  <path d="M 26 82 C 12 80 16 98 26 82 Z" fill="#C59A45"/>
+                  <path d="M 33 108 C 22 110 28 126 33 108 Z" fill="#C59A45"/>
+
+                  <!-- Right wreath branch -->
+                  <path d="M 120 120 C 140 80 120 40 84 22" fill="none" stroke="#B88A30" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M 112 35 C 122 30 125 45 112 35 Z" fill="#C59A45"/>
+                  <path d="M 127 55 C 140 50 138 68 127 55 Z" fill="#C59A45"/>
+                  <path d="M 134 82 C 148 80 144 98 134 82 Z" fill="#C59A45"/>
+                  <path d="M 127 108 C 138 110 132 126 127 108 Z" fill="#C59A45"/>
+                  
+                  <!-- Bottom ribbon tie flourish -->
+                  <path d="M 68 140 Q 80 148 92 140 Q 80 135 68 140 Z" fill="#C59A45"/>
+                </svg>
+                <div class="monogram-initials">
+                  <span class="initial-bride">S</span>
+                  <span class="monogram-divider"></span>
+                  <span class="initial-groom">D</span>
+                </div>
+              </div>
+              <div class="gold-accent-ornament">
+                <span class="ornament-line"></span>
+                <span class="ornament-icon">❖</span>
+                <span class="ornament-line"></span>
+              </div>
+            </div>
+
+            <!-- Introductory Blessing & Invitation -->
+            <div class="invitation-intro">
+              <p class="blessing-text">TOGETHER WITH JOYFUL HEARTS<br>AND THE BLESSINGS OF GOD,</p>
+              <p class="invite-text">we invite you to share in the<br>celebration of love as</p>
+            </div>
+
+            <!-- Bride & Groom Names -->
+            <div class="couple-names-section">
+              <h1 class="bride-name">Silvia Ayman</h1>
+              <div class="connector-wrap">
+                <span class="name-line"></span>
+                <span class="and-script">and</span>
+                <span class="name-line"></span>
+              </div>
+              <h1 class="groom-name">David Medhat</h1>
+              <p class="matrimony-subtext">JOIN TOGETHER IN HOLY MATRIMONY</p>
+            </div>
+
+            <!-- Gold Divider Flourish -->
+            <div class="divider-flourish">
+              <svg width="120" height="20" viewBox="0 0 120 20" fill="none">
+                <path d="M 0 10 L 45 10 M 75 10 L 120 10" stroke="#C59A45" stroke-width="1" />
+                <circle cx="53" cy="10" r="3" fill="#B88A30" />
+                <circle cx="67" cy="10" r="3" fill="#B88A30" />
+                <path d="M 60 3 L 64 10 L 60 17 L 56 10 Z" fill="#D3AC61" />
+              </svg>
+            </div>
+
+            <!-- Event Details (Date, Time, Venue) -->
+            <div class="event-details-grid">
+              <!-- Date Card -->
+              <div class="detail-item">
+                <div class="detail-icon-circle">
+                  <i class="fa-regular fa-calendar-days"></i>
+                </div>
+                <span class="detail-title">DATE</span>
+                <span class="detail-highlight">25 . 10 . 2026</span>
+                <span class="detail-sub">Sunday</span>
+              </div>
+
+              <div class="detail-separator"></div>
+
+              <!-- Time Card -->
+              <div class="detail-item">
+                <div class="detail-icon-circle">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <span class="detail-title">TIME</span>
+                <span class="detail-highlight">3:00 PM</span>
+                <span class="detail-sub">Afternoon</span>
+              </div>
+
+              <div class="detail-separator"></div>
+
+              <!-- Venue Card -->
+              <div class="detail-item">
+                <div class="detail-icon-circle">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <span class="detail-title">VENUE</span>
+                <span class="detail-highlight">Archangel Michael</span>
+                <span class="detail-sub">Church, Sheraton</span>
+              </div>
+            </div>
+
+            <!-- Venue Detailed Subtitle -->
+            <div class="venue-full-block">
+              <p class="church-title-en">ARCHANGEL MICHAEL COPTIC ORTHODOX CHURCH</p>
+              <p class="church-location-sub">Heliopolis / Sheraton Al Matar, Cairo</p>
+            </div>
+
+            <!-- QR Code Location Section -->
+            <div class="qr-location-section" id="location">
+              <div class="gold-accent-ornament mini-ornament">
+                <span class="ornament-line"></span>
+                <span class="ornament-icon">⚜</span>
+                <span class="ornament-line"></span>
+              </div>
+              
+              <a href="https://maps.app.goo.gl/TwyHQiNAUAUG1AUY8?g_st=aw" target="_blank" rel="noopener noreferrer" class="qr-link-wrapper" title="Click or scan to open location in Google Maps">
+                <div class="qr-frame-outer">
+                  <div class="qr-frame-inner">
+                    <div id="qrcode" class="qrcode-canvas"></div>
+                  </div>
+                </div>
+              </a>
+              <p class="scan-location-text">
+                <i class="fa-solid fa-qrcode"></i> scan for location
+              </p>
+            </div>
+
+            <!-- Subtle Heart Emblem Footer -->
+            <div class="card-footer-flourish">
+              <span class="footer-line"></span>
+              <span class="footer-heart">❤</span>
+              <span class="footer-line"></span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Interactive Control Buttons -->
+    <div class="bottom-actions-container">
+      <a href="https://maps.app.goo.gl/TwyHQiNAUAUG1AUY8?g_st=aw" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btnMaps">
+        <i class="fa-solid fa-map-location-dot"></i> Open Google Maps
+      </a>
+
+      <button class="btn btn-secondary" id="btnCalendar">
+        <i class="fa-regular fa-calendar-plus"></i> Add to Calendar
+      </button>
+
+      <button class="btn btn-gold" id="btnDownloadCard">
+        <i class="fa-solid fa-download"></i> Save / Download Invitation Card
+      </button>
+
+      <button class="btn btn-whatsapp" id="btnShareWhatsApp">
+        <i class="fa-brands fa-whatsapp"></i> Share via WhatsApp
+      </button>
+    </div>
+
+    <footer class="site-footer">
+      <p>With Love & Joy • Silvia & David 2026</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,969 @@
+/* =========================================================
+   WEDDING INVITATION LUXURY DESIGN SYSTEM
+   Bride & Groom: Silvia Ayman & David Medhat
+   Theme: Burgundy Wine, Soft Cream & Antique Gold
+   ========================================================= */
+
+:root {
+  --color-burgundy-deep: #430b14;
+  --color-burgundy-rich: #5f111e;
+  --color-burgundy-soft: #7a1b2c;
+  --color-burgundy-light: #9e2b40;
+  
+  --color-gold-light: #f3e0b8;
+  --color-gold-main: #c79a45;
+  --color-gold-rich: #af832f;
+  --color-gold-dark: #8c631b;
+  --color-gold-shimmer: linear-gradient(135deg, #f7e6c4 0%, #c79a45 50%, #8c631b 100%);
+  
+  --color-cream-bg: #f5efe6;
+  --color-card-bg: #fdfbf7;
+  --color-card-inner: #fffdf9;
+  
+  --color-text-main: #380b13;
+  --color-text-muted: #6b4d53;
+  --color-text-light: #8e7379;
+  
+  --font-serif-luxury: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-display-title: 'Cinzel', serif;
+  --font-script-romantic: 'Alex Brush', cursive;
+  --font-sans-clean: 'Montserrat', sans-serif;
+  
+  --card-shadow: 0 25px 60px -15px rgba(67, 11, 20, 0.22), 0 0 25px rgba(199, 154, 69, 0.15);
+  --border-radius-arch: 280px 280px 12px 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-cream-bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(95, 17, 30, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(199, 154, 69, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(253, 251, 247, 0.8) 0%, rgba(245, 239, 230, 0.9) 100%);
+  font-family: var(--font-serif-luxury);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 12px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* =========================================================
+   TOP ACTIONS & COUNTDOWN TIMER
+   ========================================================= */
+.top-action-bar {
+  width: 100%;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.countdown-card {
+  background: rgba(253, 251, 247, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(199, 154, 69, 0.35);
+  border-radius: 16px;
+  padding: 16px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(67, 11, 20, 0.08);
+}
+
+.countdown-title {
+  display: block;
+  font-family: var(--font-display-title);
+  font-size: 0.78rem;
+  letter-spacing: 2.5px;
+  color: var(--color-burgundy-rich);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.countdown-title i {
+  color: var(--color-gold-main);
+  margin-right: 4px;
+}
+
+.timer-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 58px;
+}
+
+.timer-val {
+  font-family: var(--font-display-title);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-burgundy-deep);
+  line-height: 1;
+}
+
+.timer-lbl {
+  font-family: var(--font-sans-clean);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.timer-sep {
+  font-size: 1.4rem;
+  color: var(--color-gold-main);
+  margin-top: -12px;
+  font-weight: 300;
+}
+
+/* =========================================================
+   MAIN INVITATION CARD (Matches Reference Image)
+   ========================================================= */
+.card-container {
+  width: 100%;
+  background: var(--color-card-bg);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  padding: 24px 20px;
+  animation: cardFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+/* Watercolor Corner Washes */
+.bg-watercolor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.top-left-watercolor {
+  top: -60px;
+  left: -60px;
+  width: 290px;
+  height: 290px;
+  background: radial-gradient(circle, rgba(95, 17, 30, 0.95) 0%, rgba(67, 11, 20, 0.75) 45%, rgba(122, 27, 44, 0.35) 70%, transparent 85%);
+  filter: blur(14px);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  transform: rotate(-15deg);
+}
+
+.bottom-right-watercolor {
+  bottom: -60px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(67, 11, 20, 0.95) 0%, rgba(95, 17, 30, 0.7) 45%, rgba(122, 27, 44, 0.3) 70%, transparent 85%);
+  filter: blur(16px);
+  border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%;
+  transform: rotate(25deg);
+}
+
+/* Botanical Branches */
+.botanical-branch {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.branch-top-left {
+  top: 15px;
+  left: 10px;
+  width: 140px;
+  height: 190px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.branch-bottom-right {
+  bottom: 10px;
+  right: 10px;
+  width: 160px;
+  height: 220px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Outer Rectangular Border */
+.card-outer-border {
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(199, 154, 69, 0.5);
+  padding: 10px;
+  background: rgba(253, 251, 247, 0.88);
+  border-radius: 8px;
+}
+
+/* Corner Filigrees on Outer Border */
+.corner-filigree {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.filigree-top-left { top: 4px; left: 4px; }
+.filigree-top-right { top: 4px; right: 4px; }
+.filigree-bottom-left { bottom: 4px; left: 4px; }
+.filigree-bottom-right { bottom: 4px; right: 4px; }
+
+/* Arch Side Botanical Tendrils - Rich & Defined */
+.arch-side-botanical {
+  position: absolute;
+  width: 70px;
+  height: 140px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 5px rgba(199, 154, 69, 0.35));
+}
+
+.bot-left {
+  top: 90px;
+  left: 12px;
+}
+
+.bot-right {
+  top: 90px;
+  right: 12px;
+}
+
+/* Floating Gold Shimmer Sparkles - Visibly Sparkling */
+.sparkles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.sparkle {
+  position: absolute;
+  color: #D4AF37;
+  font-size: 1.15rem;
+  animation: shimmerGlow 3.5s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.9), 0 0 15px rgba(199, 154, 69, 0.6);
+}
+
+.s1 { top: 10%; left: 16%; animation-delay: 0s; font-size: 1rem; }
+.s2 { top: 14%; right: 18%; animation-delay: 1.2s; font-size: 0.85rem; }
+.s3 { top: 38%; left: 10%; animation-delay: 2.4s; font-size: 1.1rem; }
+.s4 { top: 42%; right: 12%; animation-delay: 0.6s; font-size: 0.95rem; }
+.s5 { top: 68%; left: 18%; animation-delay: 1.8s; font-size: 0.9rem; }
+.s6 { top: 74%; right: 20%; animation-delay: 3s; font-size: 1.05rem; }
+.s7 { top: 86%; left: 35%; animation-delay: 1s; font-size: 0.95rem; }
+.s8 { top: 28%; right: 36%; animation-delay: 2.2s; font-size: 0.8rem; }
+
+@keyframes shimmerGlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35) rotate(180deg);
+  }
+}
+
+/* Inner Classic Arch Frame with Warm Rich Watercolor & Paper Texture */
+.card-arch-frame {
+  position: relative;
+  border: 1.8px solid var(--color-gold-main);
+  border-radius: var(--border-radius-arch);
+  padding: 38px 22px 30px 22px;
+  background: 
+    radial-gradient(circle at 50% 25%, rgba(255, 253, 249, 0.94) 0%, rgba(250, 240, 230, 0.85) 50%, rgba(243, 226, 218, 0.7) 100%),
+    radial-gradient(circle at 10% 15%, rgba(95, 17, 30, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(95, 17, 30, 0.09) 0%, transparent 45%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c79a45' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M30 30c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm-20 0c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm10-20c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zm0 40c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(135deg, #fffdfa 0%, #f9f0e6 100%);
+  box-shadow: inset 0 0 50px rgba(199, 154, 69, 0.12), 0 8px 30px rgba(67, 11, 20, 0.06);
+}
+
+.card-arch-frame::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1.2px solid rgba(199, 154, 69, 0.55);
+  border-radius: calc(280px - 5px) calc(280px - 5px) 8px 8px;
+  pointer-events: none;
+}
+
+/* Distinct Royal Monogram Watermark (Clearly Visible & Gorgeous) */
+.watermark-monogram {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  user-select: none;
+  opacity: 0.13; /* Clearly visible luxury watermark */
+  filter: drop-shadow(0 2px 8px rgba(199, 154, 69, 0.5));
+}
+
+.wm-letter {
+  font-family: var(--font-serif-luxury);
+  font-size: 19rem;
+  font-weight: 700;
+  color: var(--color-burgundy-rich);
+  line-height: 0.8;
+  letter-spacing: -12px;
+}
+
+.wm-s {
+  transform: translateX(20px);
+}
+
+.wm-d {
+  transform: translateX(-20px);
+}
+
+.wm-amp {
+  font-family: var(--font-script-romantic);
+  font-size: 15rem;
+  color: var(--color-gold-main);
+  margin: 0 -40px;
+  line-height: 0.8;
+  font-weight: 400;
+}
+
+.arch-inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 4;
+}
+
+/* =========================================================
+   MONOGRAM SECTION
+   ========================================================= */
+.monogram-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monogram-wreath {
+  width: 110px;
+  height: 110px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wreath-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.monogram-initials {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-serif-luxury);
+  color: var(--color-burgundy-deep);
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.monogram-divider {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(180deg, transparent, var(--color-gold-main), transparent);
+}
+
+.gold-accent-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100px;
+}
+
+.ornament-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-main));
+}
+
+.gold-accent-ornament span:last-child {
+  background: linear-gradient(90deg, var(--color-gold-main), transparent);
+}
+
+.ornament-icon {
+  color: var(--color-gold-rich);
+  font-size: 0.65rem;
+}
+
+/* =========================================================
+   INVITATION HEADER TEXT
+   ========================================================= */
+.invitation-intro {
+  margin-bottom: 20px;
+}
+
+.blessing-text {
+  font-family: var(--font-display-title);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--color-burgundy-deep);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.invite-text {
+  font-family: var(--font-serif-luxury);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* =========================================================
+   COUPLE NAMES SECTION
+   ========================================================= */
+.couple-names-section {
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.bride-name, .groom-name {
+  font-family: var(--font-serif-luxury);
+  font-size: 2.7rem;
+  font-weight: 600;
+  color: var(--color-burgundy-deep);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(67, 11, 20, 0.08);
+}
+
+.connector-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 4px 0;
+}
+
+.name-line {
+  width: 45px;
+  height: 1px;
+  background: var(--color-gold-main);
+  opacity: 0.8;
+}
+
+.and-script {
+  font-family: var(--font-script-romantic);
+  font-size: 2.2rem;
+  color: var(--color-gold-dark);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.matrimony-subtext {
+  font-family: var(--font-display-title);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--color-burgundy-rich);
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+/* Divider Flourish */
+.divider-flourish {
+  margin: 12px 0 16px 0;
+}
+
+/* =========================================================
+   EVENT DETAILS GRID (DATE, TIME, VENUE)
+   ========================================================= */
+.event-details-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 520px;
+  margin: 10px 0 18px 0;
+  padding: 12px 6px;
+  border-top: 1px solid rgba(199, 154, 69, 0.25);
+  border-bottom: 1px solid rgba(199, 154, 69, 0.25);
+}
+
+.detail-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6px;
+}
+
+.detail-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-burgundy-rich);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  background: rgba(247, 230, 196, 0.3);
+}
+
+.detail-title {
+  font-family: var(--font-display-title);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-burgundy-deep);
+  margin-bottom: 3px;
+}
+
+.detail-highlight {
+  font-family: var(--font-serif-luxury);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-burgundy-rich);
+  line-height: 1.2;
+}
+
+.detail-sub {
+  font-family: var(--font-sans-clean);
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  margin-top: 2px;
+}
+
+.detail-separator {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, transparent, rgba(199, 154, 69, 0.6), transparent);
+}
+
+/* Church Detailed Block */
+.venue-full-block {
+  margin-bottom: 16px;
+}
+
+.church-title-en {
+  font-family: var(--font-display-title);
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--color-burgundy-deep);
+  line-height: 1.4;
+}
+
+.church-location-sub {
+  font-family: var(--font-serif-luxury);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-gold-dark);
+  margin-top: 2px;
+}
+
+/* =========================================================
+   QR CODE LOCATION SECTION
+   ========================================================= */
+.qr-location-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.mini-ornament {
+  margin-bottom: 12px;
+  width: 80px;
+}
+
+.qr-link-wrapper {
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.qr-link-wrapper:hover {
+  transform: scale(1.06);
+}
+
+.qr-frame-outer {
+  padding: 6px;
+  background: #fffdfa;
+  border: 1.5px solid var(--color-gold-main);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(67, 11, 20, 0.08);
+}
+
+.qr-frame-inner {
+  padding: 8px;
+  border: 1px dashed rgba(199, 154, 69, 0.6);
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qrcode-canvas {
+  width: 115px;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qrcode-canvas img, .qrcode-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.scan-location-text {
+  font-family: var(--font-display-title);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--color-burgundy-deep);
+  font-weight: 600;
+  margin-top: 8px;
+  text-transform: lowercase;
+}
+
+.scan-location-text i {
+  color: var(--color-gold-main);
+  margin-right: 3px;
+  font-size: 0.8rem;
+}
+
+/* Card Footer Flourish */
+.card-footer-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  width: 90px;
+}
+
+.footer-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-main));
+}
+
+.card-footer-flourish span:last-child {
+  background: linear-gradient(90deg, var(--color-gold-main), transparent);
+}
+
+.footer-heart {
+  color: var(--color-burgundy-rich);
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   BOTTOM INTERACTIVE BUTTONS
+   ========================================================= */
+.bottom-actions-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 30px;
+  font-family: var(--font-display-title);
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-burgundy-rich) 0%, var(--color-burgundy-deep) 100%);
+  color: #fff;
+  border: 1px solid var(--color-gold-main);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-burgundy-soft) 0%, var(--color-burgundy-rich) 100%);
+  box-shadow: 0 6px 20px rgba(95, 17, 30, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--color-burgundy-deep);
+  border: 1.5px solid var(--color-gold-main);
+}
+
+.btn-secondary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f0d592 0%, #c79a45 50%, #906517 100%);
+  color: #3b1016;
+  font-weight: 700;
+  border: 1px solid #ffe3a8;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px rgba(199, 154, 69, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+  background: #20BA5A;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Floating Audio Player Button */
+.audio-control-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.floating-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-card-bg);
+  border: 1.5px solid var(--color-gold-main);
+  color: var(--color-burgundy-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(67, 11, 20, 0.18);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+  background: var(--color-gold-light);
+}
+
+.floating-btn.playing {
+  animation: pulseRotate 4s linear infinite;
+  background: var(--color-burgundy-deep);
+  color: var(--color-gold-light);
+}
+
+.music-tooltip {
+  position: absolute;
+  right: 56px;
+  white-space: nowrap;
+  background: var(--color-burgundy-deep);
+  color: #fff;
+  font-family: var(--font-sans-clean);
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--color-gold-main);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.floating-btn:hover .music-tooltip {
+  opacity: 1;
+}
+
+/* Site Footer */
+.site-footer {
+  text-align: center;
+  font-family: var(--font-serif-luxury);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   ANIMATIONS & RESPONSIVE DESIGN
+   ========================================================= */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseRotate {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 540px) {
+  body {
+    padding: 16px 8px;
+  }
+
+  .card-container {
+    padding: 16px 10px;
+  }
+
+  .card-arch-frame {
+    padding: 28px 12px 24px 12px;
+    border-radius: 180px 180px 10px 10px;
+  }
+
+  .card-arch-frame::after {
+    border-radius: 175px 175px 6px 6px;
+  }
+
+  .bride-name, .groom-name {
+    font-size: 2.15rem;
+  }
+
+  .and-script {
+    font-size: 1.85rem;
+  }
+
+  .blessing-text {
+    font-size: 0.68rem;
+    letter-spacing: 1.2px;
+  }
+
+  .invite-text {
+    font-size: 0.95rem;
+  }
+
+  .event-details-grid {
+    padding: 8px 2px;
+  }
+
+  .detail-highlight {
+    font-size: 0.92rem;
+  }
+
+  .detail-title {
+    font-size: 0.62rem;
+  }
+
+  .church-title-en {
+    font-size: 0.74rem;
+  }
+
+  .branch-top-left {
+    width: 105px;
+    height: 145px;
+  }
+
+  .branch-bottom-right {
+    width: 120px;
+    height: 165px;
+  }
+
+  .watermark-monogram {
+    opacity: 0.04;
+  }
+
+  .wm-letter {
+    font-size: 11rem;
+    letter-spacing: -6px;
+  }
+
+  .wm-amp {
+    font-size: 8.5rem;
+    margin: 0 -22px;
+  }
+}
